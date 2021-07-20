@@ -1,0 +1,73 @@
+backend:
+  name: git-gateway
+  branch: master
+media_folder: img
+display_url: /base-blog/
+collections:
+  - label: Posts
+    name: posts
+    description: Here you can create or edit your posts
+    folder: posts
+    preview: false
+    create: true
+    view_filters:
+      - label: Drafts
+        field: draft
+        pattern: true
+    fields:
+      - label: title
+        name: title
+        widget: string
+      - label: description
+        name: description
+        widget: string
+      - label: date
+        name: date
+        widget: datetime
+      - label: tags
+        name: tags
+        widget: list
+      - label: draft
+        name: draft
+        widget: boolean
+      - label: body
+        name: body
+        widget: markdown
+  - label: pages
+    name: pages
+    description: Here you can edit your individual pages
+    preview: false
+    files:
+      - label: about
+        name: about
+        file: /about.md
+        fields: &ref_0
+          - label: title
+            name: title
+            widget: string
+          - label: url
+            name: url
+            widget: string
+          - label: body
+            name: body
+            widget: markdown
+          - label: menu
+            name: menu
+            widget: object
+            fields:
+              - label: visible
+                name: visible
+                widget: boolean
+              - label: order
+                name: order
+                widget: number
+          - label: templateClass
+            name: templateclass
+            widget: hidden
+          - label: layout
+            name: layout
+            widget: hidden
+      - label: '404'
+        name: '404'
+        file: /404.md
+        fields: *ref_0
